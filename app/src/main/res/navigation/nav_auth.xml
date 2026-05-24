@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.matheusramalho.joiaapp2026.ui.Auth.LoginFragment"
+        android:name="com.matheusramalho.joiaapp2026.ui.Auth.RegisterFragment"
         android:label="Cadastro"/>
 
 </navigation>

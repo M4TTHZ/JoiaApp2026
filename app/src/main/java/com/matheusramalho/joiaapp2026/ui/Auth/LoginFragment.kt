@@ -14,7 +14,6 @@ import com.matheusramalho.joiaapp2026.R
 import com.matheusramalho.joiaapp2026.databinding.FragmentLoginBinding
 import com.matheusramalho.joiaapp2026.utils.Resource
 
-
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
@@ -24,17 +23,13 @@ class LoginFragment : Fragment() {
         AuthViewModelFactory(requireContext())
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupListeners()
         observeLoginState()
     }
@@ -46,7 +41,6 @@ class LoginFragment : Fragment() {
                 senha = binding.etSenha.text.toString()
             )
         }
-
         binding.tvCadastro.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
@@ -56,21 +50,15 @@ class LoginFragment : Fragment() {
         viewModel.loginState.observe(viewLifecycleOwner) { resource ->
             when (resource) {
                 is Resource.Loading -> setLoading(true)
-
                 is Resource.Success -> {
                     setLoading(false)
-                    // Limpa a back-stack e abre o app principal
                     val intent = Intent(requireContext(), HomeActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                            Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 }
-
                 is Resource.Error -> {
                     setLoading(false)
-                    Snackbar.make(binding.root, resource.message, Snackbar.LENGTH_LONG)
-                        .setAction("OK") {}
-                        .show()
+                    Snackbar.make(binding.root, resource.message, Snackbar.LENGTH_LONG).setAction("OK") {}.show()
                 }
             }
         }
@@ -83,8 +71,5 @@ class LoginFragment : Fragment() {
         binding.etSenha.isEnabled      = !loading
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null  // evita memory leak
-    }
+    override fun onDestroyView() { super.onDestroyView(); _binding = null }
 }

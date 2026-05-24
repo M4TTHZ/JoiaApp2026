@@ -18,24 +18,24 @@ class SessionManager(context: Context) {
     }
 
     fun saveSession(
-        token: String,
-        nome: String,
-        email: String,
-        role: String,
-//        cursoId: String
+        token: String, nome: String, email: String,
+        role: String, cursoId: String, cursoNome: String = ""
     ) {
         prefs.edit()
             .putString(KEY_TOKEN, token)
             .putString(KEY_NOME, nome)
             .putString(KEY_EMAIL, email)
             .putString(KEY_ROLE, role)
-//            .putString(KEY_CURSO, cursoId)
+            .putString(KEY_CURSO, cursoId)
+            .putString("user_curso_nome", cursoNome)
             .apply()
     }
 
     fun getToken(): String? = prefs.getString(KEY_TOKEN, null)
     fun getNome(): String?  = prefs.getString(KEY_NOME, null)
     fun getRole(): String?  = prefs.getString(KEY_ROLE, null)
+    fun getCursoId(): String?   = prefs.getString(KEY_CURSO, null)
+    fun getCursoNome(): String? = prefs.getString("user_curso_nome", null)
 
     fun isLoggedIn(): Boolean = !getToken().isNullOrBlank()
 

@@ -16,6 +16,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AuthActivity::class.java)
             startActivity(intent)
             finish()
-        }, 1000)
+        }, 2000)
     }
 }

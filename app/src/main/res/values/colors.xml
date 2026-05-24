@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_primary">#534AB7</color>
+    <color name="purple_light">#EEEDFE</color>
+    <color name="purple_dark">#3C3489</color>
+    <color name="status_live">#E53935</color>
+    <color name="status_ended">#757575</color>
+    <color name="status_scheduled">#1976D2</color>
 </resources>

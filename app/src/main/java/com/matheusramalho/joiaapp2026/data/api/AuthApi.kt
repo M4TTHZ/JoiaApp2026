@@ -1,14 +1,22 @@
 package com.matheusramalho.joiaapp2026.data.api
 
+import com.matheusramalho.joiaapp2026.data.model.CursoResponse
+import com.matheusramalho.joiaapp2026.data.model.LoginRequest
+import com.matheusramalho.joiaapp2026.data.model.LoginResponse
+import com.matheusramalho.joiaapp2026.data.model.RegisterRequest
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
-
 
 interface AuthApi {
 
     @POST("auth/login")
-    suspend fun login(
-        @Body request: LoginRequest
-    ): Response<LoginResponse>
+    suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
+
+    @POST("auth/register")
+    suspend fun register(@Body request: RegisterRequest): Response<LoginResponse>
+
+    @GET("cursos")
+    suspend fun getCursos(): Response<List<CursoResponse>>
 }

@@ -9,4 +9,20 @@
         android:id="@+id/homeFragment"
         android:name="com.matheusramalho.joiaapp2026.ui.home.HomeFragment"
         android:label="Home"/>
+
+    <fragment
+        android:id="@+id/resultadosFragment"
+        android:name="com.matheusramalho.joiaapp2026.ui.resultados.ResultadosFragment"
+        android:label="Resultados"/>
+
+    <fragment
+        android:id="@+id/rankingFragment"
+        android:name="com.matheusramalho.joiaapp2026.ui.ranking.RankingFragment"
+        android:label="Ranking"/>
+
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.matheusramalho.joiaapp2026.ui.PerfilFragment"
+        android:label="Perfil"/>
+
 </navigation>

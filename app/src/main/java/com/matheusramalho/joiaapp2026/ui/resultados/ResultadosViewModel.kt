@@ -40,7 +40,7 @@ class ResultadosViewModel(private val repository: GameRepository) : ViewModel() 
                 is Resource.Success -> {
                     // Filtra apenas os encerrados e ordena do mais recente
                     todosEncerrados = r.data
-                        .filter { it.status.uppercase() == "ENCERRADO" }
+                        .filter { it.status.uppercase() == "FINALIZADO" }
                         .sortedByDescending { it.iniciaEm }
                     aplicarFiltro()
                 }

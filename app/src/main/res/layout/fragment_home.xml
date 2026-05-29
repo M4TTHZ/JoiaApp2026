@@ -26,8 +26,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:padding="16dp"
-                    android:background="@color/purple_primary">
+                    android:padding="@dimen/spacing_medium"
+                    android:background="@color/header_bg">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -39,28 +39,28 @@
                             android:id="@+id/tvHeaderNome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="17sp"
+                            android:textSize="@dimen/text_title"
                             android:textStyle="bold"
-                            android:textColor="@android:color/white"/>
+                            android:textColor="@color/header_text_primary"/>
 
                         <TextView
                             android:id="@+id/tvHeaderCurso"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12sp"
-                            android:textColor="#CECBF6"
+                            android:textSize="@dimen/text_caption"
+                            android:textColor="@color/header_text_secondary"
                             android:layout_marginTop="2dp"/>
                     </LinearLayout>
 
                     <!-- Avatar inicial -->
                     <TextView
                         android:id="@+id/tvAvatar"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/avatar_size"
+                        android:layout_height="@dimen/avatar_size"
                         android:gravity="center"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:textColor="#3C3489"
+                        android:textColor="@color/purple_dark"
                         android:background="@drawable/bg_avatar"/>
                 </LinearLayout>
 
@@ -76,7 +76,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingHorizontal="16dp"
+                        android:paddingHorizontal="@dimen/spacing_medium"
                         android:gravity="center_vertical"
                         android:layout_marginBottom="10dp">
 
@@ -91,14 +91,14 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Ao vivo agora"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/text_body"
                             android:textStyle="bold"/>
 
                         <TextView
                             android:id="@+id/tvLiveCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12sp"
+                            android:textSize="@dimen/text_caption"
                             android:textColor="?attr/colorOnSurfaceVariant"/>
                     </LinearLayout>
 
@@ -107,7 +107,7 @@
                         android:id="@+id/rvLive"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingHorizontal="16dp"
+                        android:paddingHorizontal="@dimen/spacing_medium"
                         android:clipToPadding="false"
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
@@ -120,7 +120,7 @@
                         android:layout_gravity="center_horizontal"
                         android:orientation="horizontal"
                         android:layout_marginTop="8dp"
-                        android:paddingHorizontal="16dp"/>
+                        android:paddingHorizontal="@dimen/spacing_medium"/>
 
                     <!-- Estado vazio ao vivo -->
                     <TextView
@@ -129,7 +129,7 @@
                         android:layout_height="60dp"
                         android:gravity="center"
                         android:text="Nenhum jogo ao vivo no momento"
-                        android:textSize="13sp"
+                        android:textSize="@dimen/text_body"
                         android:textColor="?attr/colorOnSurfaceVariant"
                         android:visibility="gone"/>
                 </LinearLayout>
@@ -139,7 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
-                    android:paddingHorizontal="16dp"
+                    android:paddingHorizontal="@dimen/spacing_medium"
                     android:paddingVertical="8dp">
 
                     <LinearLayout
@@ -155,9 +155,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Próximas partidas"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/text_body"
                     android:textStyle="bold"
-                    android:paddingHorizontal="16dp"
+                    android:paddingHorizontal="@dimen/spacing_medium"
                     android:paddingBottom="8dp"/>
 
                 <ProgressBar
@@ -181,7 +181,7 @@
                     android:gravity="center"
                     android:padding="24dp"
                     android:text="Nenhum jogo encontrado para os filtros selecionados"
-                    android:textSize="13sp"
+                    android:textSize="@dimen/text_body"
                     android:textColor="?attr/colorOnSurfaceVariant"
                     android:visibility="gone"/>
 

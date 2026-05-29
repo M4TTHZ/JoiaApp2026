@@ -19,23 +19,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- Header roxo -->
+                <!-- Header com cores semânticas -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="#534AB7"
-                    android:paddingHorizontal="16dp"
-                    android:paddingTop="16dp"
+                    android:background="@color/header_bg"
+                    android:paddingHorizontal="@dimen/spacing_medium"
+                    android:paddingTop="@dimen/spacing_medium"
                     android:paddingBottom="0dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ranking"
-                        android:textSize="20sp"
+                        android:textSize="@dimen/text_headline"
                         android:textStyle="bold"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/header_text_primary"
                         android:layout_marginBottom="4dp"/>
 
                     <TextView
@@ -43,8 +43,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Classificação geral dos cursos"
-                        android:textSize="12sp"
-                        android:textColor="#CECBF6"
+                        android:textSize="@dimen/text_caption"
+                        android:textColor="@color/header_text_secondary"
                         android:layout_marginBottom="12dp"/>
 
                     <!-- Abas Geral / Por Modalidade -->
@@ -52,41 +52,41 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:background="#3C3489"
+                        android:background="@color/header_tab_bg"
                         android:padding="4dp"
                         android:layout_marginHorizontal="-16dp">
 
                         <TextView
                             android:id="@+id/tabGeral"
                             android:layout_width="0dp"
-                            android:layout_height="36dp"
+                            android:layout_height="@dimen/tab_height"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Geral"
-                            android:textSize="13sp"
+                            android:textSize="@dimen/text_body"
                             android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:textColor="@color/header_text_primary"
                             android:background="@drawable/bg_tab_active"/>
 
                         <TextView
                             android:id="@+id/tabModalidade"
                             android:layout_width="0dp"
-                            android:layout_height="36dp"
+                            android:layout_height="@dimen/tab_height"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Por modalidade"
-                            android:textSize="13sp"
-                            android:textColor="#AFA9EC"/>
+                            android:textSize="@dimen/text_body"
+                            android:textColor="@color/header_tab_inactive"/>
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Chips de modalidade (visível só na aba Por Modalidade) -->
+                <!-- Chips de modalidade -->
                 <HorizontalScrollView
                     android:id="@+id/scrollChips"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
-                    android:paddingHorizontal="16dp"
+                    android:paddingHorizontal="@dimen/spacing_medium"
                     android:paddingVertical="10dp"
                     android:visibility="gone">
 
@@ -105,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="bottom|center_horizontal"
-                    android:paddingHorizontal="16dp"
+                    android:paddingHorizontal="@dimen/spacing_medium"
                     android:paddingTop="20dp"
                     android:paddingBottom="8dp"
                     android:visibility="gone">
@@ -118,24 +118,37 @@
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:gravity="center">
-                        <TextView android:id="@+id/tvSigla2" android:layout_width="44dp"
-                            android:layout_height="44dp" android:gravity="center"
-                            android:textSize="13sp" android:textStyle="bold"
-                            android:textColor="#085041" android:background="@drawable/bg_avatar_teal"/>
-                        <TextView android:id="@+id/tvNome2" android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:textSize="9sp"
-                            android:textColor="?attr/colorOnSurfaceVariant" android:gravity="center"
+                        <TextView android:id="@+id/tvSigla2"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/podio_prata_text"
+                            android:background="@drawable/bg_avatar_teal"/>
+                        <TextView android:id="@+id/tvNome2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="9sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:gravity="center"
                             android:layout_marginTop="4dp"/>
-                        <TextView android:id="@+id/tvPts2" android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:textSize="11sp"
-                            android:textStyle="bold" android:textColor="?attr/colorOnSurface"
+                        <TextView android:id="@+id/tvPts2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface"
                             android:layout_marginBottom="4dp"/>
-                        <LinearLayout android:id="@+id/bar2" android:layout_width="56dp"
-                            android:layout_height="44dp" android:background="#9FE1CB"
-                            android:gravity="center" android:orientation="vertical">
+                        <LinearLayout android:id="@+id/bar2"
+                            android:layout_width="56dp"
+                            android:layout_height="44dp"
+                            android:background="@color/podio_prata_bg"
+                            android:gravity="center"
+                            android:orientation="vertical">
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                 android:text="2" android:textSize="14sp" android:textStyle="bold"
-                                android:textColor="#085041"/>
+                                android:textColor="@color/podio_prata_text"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -147,24 +160,37 @@
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:gravity="center">
-                        <TextView android:id="@+id/tvSigla1" android:layout_width="52dp"
-                            android:layout_height="52dp" android:gravity="center"
-                            android:textSize="15sp" android:textStyle="bold"
-                            android:textColor="#3C3489" android:background="@drawable/bg_avatar"/>
-                        <TextView android:id="@+id/tvNome1" android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:textSize="9sp"
-                            android:textColor="?attr/colorOnSurfaceVariant" android:gravity="center"
+                        <TextView android:id="@+id/tvSigla1"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:gravity="center"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/purple_dark"
+                            android:background="@drawable/bg_avatar"/>
+                        <TextView android:id="@+id/tvNome1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="9sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:gravity="center"
                             android:layout_marginTop="4dp"/>
-                        <TextView android:id="@+id/tvPts1" android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:textSize="11sp"
-                            android:textStyle="bold" android:textColor="?attr/colorOnSurface"
+                        <TextView android:id="@+id/tvPts1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface"
                             android:layout_marginBottom="4dp"/>
-                        <LinearLayout android:id="@+id/bar1" android:layout_width="56dp"
-                            android:layout_height="64dp" android:background="#534AB7"
-                            android:gravity="center" android:orientation="vertical">
+                        <LinearLayout android:id="@+id/bar1"
+                            android:layout_width="56dp"
+                            android:layout_height="64dp"
+                            android:background="@color/header_bg"
+                            android:gravity="center"
+                            android:orientation="vertical">
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                 android:text="1" android:textSize="14sp" android:textStyle="bold"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@color/header_text_primary"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -176,24 +202,37 @@
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:gravity="center">
-                        <TextView android:id="@+id/tvSigla3" android:layout_width="44dp"
-                            android:layout_height="44dp" android:gravity="center"
-                            android:textSize="13sp" android:textStyle="bold"
-                            android:textColor="#633806" android:background="@drawable/bg_avatar_amber"/>
-                        <TextView android:id="@+id/tvNome3" android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:textSize="9sp"
-                            android:textColor="?attr/colorOnSurfaceVariant" android:gravity="center"
+                        <TextView android:id="@+id/tvSigla3"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/podio_bronze_text"
+                            android:background="@drawable/bg_avatar_amber"/>
+                        <TextView android:id="@+id/tvNome3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="9sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:gravity="center"
                             android:layout_marginTop="4dp"/>
-                        <TextView android:id="@+id/tvPts3" android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:textSize="11sp"
-                            android:textStyle="bold" android:textColor="?attr/colorOnSurface"
+                        <TextView android:id="@+id/tvPts3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface"
                             android:layout_marginBottom="4dp"/>
-                        <LinearLayout android:id="@+id/bar3" android:layout_width="56dp"
-                            android:layout_height="32dp" android:background="#FAC775"
-                            android:gravity="center" android:orientation="vertical">
+                        <LinearLayout android:id="@+id/bar3"
+                            android:layout_width="56dp"
+                            android:layout_height="32dp"
+                            android:background="@color/podio_bronze_bg"
+                            android:gravity="center"
+                            android:orientation="vertical">
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                                 android:text="3" android:textSize="14sp" android:textStyle="bold"
-                                android:textColor="#633806"/>
+                                android:textColor="@color/podio_bronze_text"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -225,7 +264,7 @@
                     android:gravity="center"
                     android:padding="32dp"
                     android:text="Nenhuma classificação disponível"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/text_body"
                     android:textColor="?attr/colorOnSurfaceVariant"
                     android:visibility="gone"/>
 

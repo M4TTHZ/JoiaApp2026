@@ -11,15 +11,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:paddingHorizontal="32dp"
-        android:paddingTop="64dp"
+        android:paddingHorizontal="@dimen/auth_padding_horizontal"
+        android:paddingTop="@dimen/auth_padding_top"
         android:paddingBottom="32dp">
 
         <!-- Ícone / logo -->
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="@dimen/logo_size"
+            android:layout_height="@dimen/logo_size"
             android:src="@drawable/logo"
+            android:contentDescription="Logo"
             android:layout_marginBottom="8dp"/>
 
         <TextView
@@ -35,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Faça login para continuar"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_body"
             android:textColor="?attr/colorOnSurfaceVariant"
             android:layout_marginBottom="40dp"/>
 
@@ -46,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="E-mail"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="@dimen/spacing_medium">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
@@ -78,10 +79,10 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/button_height"
             android:text="Entrar"
             android:textSize="16sp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="@dimen/spacing_medium"/>
 
         <!-- Loading -->
         <ProgressBar
@@ -89,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="@dimen/spacing_medium"/>
 
         <!-- Link cadastro -->
         <LinearLayout
@@ -102,14 +103,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Não tem conta? "
-                android:textSize="14sp"/>
+                android:textSize="@dimen/text_body"/>
 
             <TextView
                 android:id="@+id/tvCadastro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cadastre-se"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_body"
                 android:textStyle="bold"
                 android:textColor="?attr/colorPrimary"
                 android:clickable="true"

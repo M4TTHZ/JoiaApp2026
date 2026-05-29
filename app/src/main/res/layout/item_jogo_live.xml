@@ -2,10 +2,10 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="260dp"
+    android:layout_width="@dimen/live_card_width"
     android:layout_height="wrap_content"
     android:layout_marginEnd="12dp"
-    app:cardBackgroundColor="@color/purple_primary"
+    app:cardBackgroundColor="@color/live_card_bg"
     app:cardCornerRadius="14dp"
     app:cardElevation="0dp">
 
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="11sp"
-            android:textColor="#CECBF6"
+            android:textColor="@color/live_fase_color"
             android:layout_marginBottom="8dp"/>
 
         <!-- Times -->
@@ -39,7 +39,7 @@
                 android:layout_weight="1"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/white"
+                android:textColor="@color/header_text_primary"
                 android:gravity="center"/>
 
             <TextView
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="vs"
                 android:textSize="12sp"
-                android:textColor="#AFA9EC"
+                android:textColor="@color/live_text_secondary"
                 android:paddingHorizontal="8dp"/>
 
             <TextView
@@ -57,7 +57,7 @@
                 android:layout_weight="1"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/white"
+                android:textColor="@color/header_text_primary"
                 android:gravity="center"/>
         </LinearLayout>
 
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="11sp"
-            android:textColor="#AFA9EC"
+            android:textColor="@color/live_text_secondary"
             android:drawablePadding="4dp"/>
 
     </LinearLayout>

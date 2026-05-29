@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:paddingHorizontal="32dp"
+        android:paddingHorizontal="@dimen/auth_padding_horizontal"
         android:paddingTop="48dp"
         android:paddingBottom="32dp">
 
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Preencha seus dados para se cadastrar"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_body"
             android:textColor="?attr/colorOnSurfaceVariant"
             android:layout_marginBottom="32dp"/>
 
@@ -96,7 +96,7 @@
                 android:imeOptions="actionNext"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Curso (Spinner via AutoCompleteTextView) -->
+        <!-- Curso -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilCurso"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
@@ -157,10 +157,10 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCadastrar"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="@dimen/button_height"
             android:text="Criar conta"
             android:textSize="16sp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="@dimen/spacing_medium"/>
 
         <!-- Voltar ao login -->
         <LinearLayout
@@ -171,13 +171,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Já tem conta? "
-                android:textSize="14sp"/>
+                android:textSize="@dimen/text_body"/>
             <TextView
                 android:id="@+id/tvLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Entrar"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_body"
                 android:textStyle="bold"
                 android:textColor="?attr/colorPrimary"
                 android:clickable="true"

@@ -2,10 +2,35 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Paleta principal -->
     <color name="purple_primary">#534AB7</color>
     <color name="purple_light">#EEEDFE</color>
     <color name="purple_dark">#3C3489</color>
+    <color name="purple_surface">#3C3489</color>
+
+    <!-- Status -->
     <color name="status_live">#E53935</color>
     <color name="status_ended">#757575</color>
     <color name="status_scheduled">#1976D2</color>
+
+    <!-- Pódio -->
+    <color name="podio_prata_bg">#9FE1CB</color>
+    <color name="podio_prata_text">#085041</color>
+    <color name="podio_bronze_bg">#FAC775</color>
+    <color name="podio_bronze_text">#633806</color>
+
+    <!-- Tema claro - cores semânticas -->
+    <color name="header_bg">#534AB7</color>
+    <color name="header_text_primary">#FFFFFF</color>
+    <color name="header_text_secondary">#CECBF6</color>
+    <color name="header_tab_bg">#3C3489</color>
+    <color name="header_tab_inactive">#AFA9EC</color>
+    <color name="live_card_bg">#534AB7</color>
+    <color name="live_text_secondary">#AFA9EC</color>
+    <color name="live_fase_color">#CECBF6</color>
+    <color name="badge_modalidade_text">#085041</color>
+    <color name="badge_encerrado_text">#444441</color>
+    <color name="sigla_text">#3C3489</color>
+    <color name="pontos_text">#534AB7</color>
 </resources>

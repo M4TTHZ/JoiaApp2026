@@ -1,96 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
-    android:layout_marginBottom="8dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="0dp"
-    app:strokeWidth="0.5dp"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
     app:strokeColor="?attr/colorOutline">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="16dp">
 
-        <TextView
-            android:background="@drawable/favorito"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <!-- TOPO -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="8dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvProxModalidade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:textColor="#085041"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
                 android:background="@drawable/bg_badge_modalidade"
-                android:layout_marginEnd="8dp"/>
-
-            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/tvProxHorario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="FUTSAL"
+                android:textColor="#085041"
                 android:textSize="11sp"
-                android:textColor="?attr/colorOnSurfaceVariant"/>
+                android:textStyle="bold"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/btnFavorito"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Favoritar"
+                android:padding="6dp"
+                android:src="@drawable/ic_star_outline"/>
+
         </LinearLayout>
+
+
+
+        <!-- EQUIPES -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
             android:gravity="center_vertical"
-            android:layout_marginBottom="6dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvProxMandante"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:gravity="center"/>
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="Equipe A"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="vs"
-                android:textSize="11sp"
-                android:textColor="?attr/colorOnSurfaceVariant"
-                android:paddingHorizontal="8dp"/>
+                android:layout_marginHorizontal="12dp"
+                android:text="VS"
+                android:textAllCaps="true"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tvProxVisitante"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:gravity="center"/>
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="Equipe B"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvProxLocal"
-            android:layout_width="wrap_content"
+        <!-- DIVISOR -->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="12dp"
+            android:background="?attr/colorOutline"/>
+
+        <!-- LOCAL -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="11sp"
-            android:textColor="?attr/colorOnSurfaceVariant"/>
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/tvProxLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="Ginásio Central"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvProxHorario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12/06/2026 • 16:00"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
+
 </com.google.android.material.card.MaterialCardView>

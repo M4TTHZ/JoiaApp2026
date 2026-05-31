@@ -17,36 +17,26 @@ class RankingViewModel(
     private val gameRepo: GameRepository
 ) : ViewModel() {
 
-    // Aba ativa: "geral" ou "modalidade"
     var abaAtiva: String = "geral"
-
-    // Modalidade selecionada nos chips
     var modalidadeSelecionada: ModalidadeResponse? = null
 
-    // --- Ranking Geral ---
     private val _rankingGeral = MutableLiveData<Resource<List<RankingGeralItem>>>()
     val rankingGeral: LiveData<Resource<List<RankingGeralItem>>> = _rankingGeral
 
-    // --- Ranking por Modalidade ---
     private val _rankingModalidade = MutableLiveData<Resource<RankingModalidadeResponse>>()
     val rankingModalidade: LiveData<Resource<RankingModalidadeResponse>> = _rankingModalidade
 
-    // --- Lista de modalidades para os chips ---
     private val _modalidades = MutableLiveData<List<ModalidadeResponse>>()
     val modalidades: LiveData<List<ModalidadeResponse>> = _modalidades
 
     fun init() {
-        carregarModalidades()
-        carregarRankingGeral()
-    }
-
-    private fun carregarModalidades() {
         viewModelScope.launch {
-            when (val result = gameRepo.getModalidades()) {
-                is Resource.Success -> _modalidades.value = result.data
+            when (val r = gameRepo.getModalidades()) {
+                is Resource.Success -> _modalidades.value = r.data
                 else -> Unit
             }
         }
+        carregarRankingGeral()
     }
 
     fun carregarRankingGeral() {
@@ -64,10 +54,7 @@ class RankingViewModel(
     }
 
     fun refresh() {
-        if (abaAtiva == "geral") {
-            carregarRankingGeral()
-        } else {
-            modalidadeSelecionada?.let { carregarRankingModalidade(it.id) }
-        }
+        if (abaAtiva == "geral") carregarRankingGeral()
+        else modalidadeSelecionada?.let { carregarRankingModalidade(it.id) }
     }
 }

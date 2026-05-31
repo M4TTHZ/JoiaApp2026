@@ -8,32 +8,39 @@ import androidx.recyclerview.widget.RecyclerView
 import com.matheusramalho.joiaapp2026.data.model.JogoResponse
 import com.matheusramalho.joiaapp2026.databinding.ItemResultadoBinding
 import java.time.ZonedDateTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 class ResultadosAdapter : ListAdapter<JogoResponse, ResultadosAdapter.VH>(DIFF) {
 
-    // Mapa de modalidadeId → nome (populado pelo Fragment)
-    var modalidadesMap: Map<String, String> = emptyMap()
+    lateinit var modalidadesMap: Map<String, String>
 
     companion object {
         private val DIFF = object : DiffUtil.ItemCallback<JogoResponse>() {
             override fun areItemsTheSame(a: JogoResponse, b: JogoResponse) = a.id == b.id
             override fun areContentsTheSame(a: JogoResponse, b: JogoResponse) = a == b
         }
-        private val FMT = DateTimeFormatter.ofPattern("dd/MM/yyyy · HH:mm", Locale("pt", "BR"))
+        private val FMT = DateTimeFormatter.ofPattern("\uD83D\uDCC5 dd/MM ⏰HH:mm", Locale("pt", "BR"))
+        private val BR  = ZoneId.of("America/Cuiaba")
     }
 
     inner class VH(private val b: ItemResultadoBinding) : RecyclerView.ViewHolder(b.root) {
         fun bind(j: JogoResponse) {
-            b.tvMandante.text  = j.mandanteId.take(8)   // substitua por nome real futuramente
-            b.tvVisitante.text = j.visitanteId.take(8)
-            b.tvLocal.text     = j.local.ifBlank { "Local não informado" }
-            b.tvFase.text      = j.fase.ifBlank { "—" }
-            b.tvModalidade.text = modalidadesMap[j.modalidadeId] ?: "Modalidade"
+            b.tvMandante.text   = j.nomeMandante()
+            b.tvVisitante.text  = j.nomeVisitante()
+            b.tvLocal.text      = j.localFormatado()
+            b.tvFase.text       = j.faseFormatada()
+            b.tvModalidade.text = j.nomeModalidade()
+
+            // Placar do resultado
+            try {
+                b.tvPlacar.text    = j.placares()
+                b.tvPlacar.visibility = android.view.View.VISIBLE
+            } catch (_: Exception) {}
 
             b.tvData.text = try {
-                ZonedDateTime.parse(j.iniciaEm).format(FMT)
+                ZonedDateTime.parse(j.iniciaEm).withZoneSameInstant(BR).format(FMT)
             } catch (e: Exception) { j.iniciaEm }
         }
     }

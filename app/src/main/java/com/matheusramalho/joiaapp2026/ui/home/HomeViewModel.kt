@@ -11,47 +11,41 @@ import com.matheusramalho.joiaapp2026.utils.Resource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.ZonedDateTime
+import java.time.ZoneId
 
 class HomeViewModel(private val repository: GameRepository) : ViewModel() {
 
-    // --- Todos os jogos brutos da API ---
     private var todosOsJogos: List<JogoResponse> = emptyList()
 
-    // --- Carrossel: só jogos AO_VIVO ---
     private val _jogosAoVivo = MutableLiveData<Resource<List<JogoResponse>>>()
     val jogosAoVivo: LiveData<Resource<List<JogoResponse>>> = _jogosAoVivo
 
-    // --- Lista filtrada: AGENDADO + filtros aplicados ---
     private val _proximosJogos = MutableLiveData<List<JogoResponse>>()
     val proximosJogos: LiveData<List<JogoResponse>> = _proximosJogos
 
-    // --- Modalidades para os chips de filtro ---
     private val _modalidades = MutableLiveData<List<ModalidadeResponse>>()
     val modalidades: LiveData<List<ModalidadeResponse>> = _modalidades
 
-    // --- Filtros ativos ---
     var filtroModalidadeId: String? = null
-    var filtroCursoId: String?      = null  // mandante ou visitante
-    var filtroDia: String?          = null  // "hoje", "amanha" ou null
+    var filtroCursoId: String?      = null
+    var filtroDia: String?          = null
 
     companion object {
         private const val POLLING_MS = 30_000L
-        const val STATUS_AO_VIVO   = "AO_VIVO"
-        const val STATUS_AGENDADO  = "AGENDADO"
+        // Status da API real
+        const val STATUS_EM_ANDAMENTO = "EM_ANDAMENTO"
+        const val STATUS_AGENDADO     = "AGENDADO"
+        const val STATUS_FINALIZADO   = "FINALIZADO"
     }
 
     fun init() {
-        carregarModalidades()
-        startPolling()
-    }
-
-    private fun carregarModalidades() {
         viewModelScope.launch {
-            when (val result = repository.getModalidades()) {
-                is Resource.Success -> _modalidades.value = result.data
+            when (val r = repository.getModalidades()) {
+                is Resource.Success -> _modalidades.value = r.data
                 else -> Unit
             }
         }
+        startPolling()
     }
 
     fun startPolling() {
@@ -63,59 +57,47 @@ class HomeViewModel(private val repository: GameRepository) : ViewModel() {
         }
     }
 
-    fun refresh() {
-        viewModelScope.launch { fetchJogos() }
-    }
+    fun refresh() { viewModelScope.launch { fetchJogos() } }
 
     private suspend fun fetchJogos() {
-        if (_jogosAoVivo.value == null) {
-            _jogosAoVivo.value = Resource.Loading
-        }
-        when (val result = repository.getJogos()) {
+        if (_jogosAoVivo.value == null) _jogosAoVivo.value = Resource.Loading
+        when (val r = repository.getJogos()) {
             is Resource.Success -> {
-                todosOsJogos = result.data
+                todosOsJogos = r.data
                 _jogosAoVivo.value = Resource.Success(
-                    result.data.filter { it.status.uppercase() == STATUS_AO_VIVO }
+                    r.data.filter { it.status.uppercase() == STATUS_EM_ANDAMENTO }
                 )
                 aplicarFiltros()
             }
-            is Resource.Error -> {
-                _jogosAoVivo.value = Resource.Error(result.message)
-            }
+            is Resource.Error -> _jogosAoVivo.value = Resource.Error(r.message)
             else -> Unit
         }
     }
 
-    // Chamado sempre que um chip de filtro muda
     fun aplicarFiltros() {
-        val agora = ZonedDateTime.now()
-        val amanha = agora.plusDays(1)
+        val BR    = ZoneId.of("America/Cuiaba")
+        val agora = ZonedDateTime.now(BR)
 
         val filtrado = todosOsJogos
             .filter { it.status.uppercase() == STATUS_AGENDADO }
+            .filter { jogo -> filtroModalidadeId == null || jogo.modalidadeId == filtroModalidadeId }
             .filter { jogo ->
-                // Filtro modalidade
-                filtroModalidadeId == null || jogo.modalidadeId == filtroModalidadeId
-            }
-            .filter { jogo ->
-                // Filtro curso (meu curso como mandante ou visitante)
                 filtroCursoId == null ||
-                        jogo.mandanteId == filtroCursoId ||
-                        jogo.visitanteId == filtroCursoId
+                jogo.mandante?.cursoId == filtroCursoId ||
+                jogo.visitante?.cursoId == filtroCursoId
             }
             .filter { jogo ->
-                // Filtro dia
                 if (filtroDia == null) return@filter true
                 try {
-                    val dataJogo = ZonedDateTime.parse(jogo.iniciaEm)
+                    val dataJogo = ZonedDateTime.parse(jogo.iniciaEm).withZoneSameInstant(BR).toLocalDate()
                     when (filtroDia) {
-                        "hoje"   -> dataJogo.toLocalDate() == agora.toLocalDate()
-                        "amanha" -> dataJogo.toLocalDate() == amanha.toLocalDate()
+                        "hoje"   -> dataJogo == agora.toLocalDate()
+                        "amanha" -> dataJogo == agora.toLocalDate().plusDays(1)
                         else     -> true
                     }
-                } catch (e: Exception) { true }
+                } catch (_: Exception) { true }
             }
-            .sortedBy { it.iniciaEm } // ordena por horário
+            .sortedBy { it.iniciaEm }
 
         _proximosJogos.value = filtrado
     }

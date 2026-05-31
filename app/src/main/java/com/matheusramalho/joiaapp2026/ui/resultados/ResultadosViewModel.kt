@@ -24,7 +24,6 @@ class ResultadosViewModel(private val repository: GameRepository) : ViewModel() 
 
     fun init() {
         viewModelScope.launch {
-            // Carrega modalidades para os chips
             when (val r = repository.getModalidades()) {
                 is Resource.Success -> _modalidades.value = r.data
                 else -> Unit
@@ -38,10 +37,10 @@ class ResultadosViewModel(private val repository: GameRepository) : ViewModel() 
             _resultados.value = Resource.Loading
             when (val r = repository.getJogos()) {
                 is Resource.Success -> {
-                    // Filtra apenas os encerrados e ordena do mais recente
+                    // API usa "FINALIZADO" não "ENCERRADO"
                     todosEncerrados = r.data
                         .filter { it.status.uppercase() == "FINALIZADO" }
-                        .sortedByDescending { it.iniciaEm }
+                        .sortedByDescending { it.finalizadoEm ?: it.iniciaEm }
                     aplicarFiltro()
                 }
                 is Resource.Error -> _resultados.value = Resource.Error(r.message)
@@ -51,11 +50,8 @@ class ResultadosViewModel(private val repository: GameRepository) : ViewModel() 
     }
 
     fun aplicarFiltro() {
-        val filtrado = if (filtroModalidadeId == null) {
-            todosEncerrados
-        } else {
-            todosEncerrados.filter { it.modalidadeId == filtroModalidadeId }
-        }
+        val filtrado = if (filtroModalidadeId == null) todosEncerrados
+        else todosEncerrados.filter { it.modalidadeId == filtroModalidadeId }
         _resultados.value = Resource.Success(filtrado)
     }
 

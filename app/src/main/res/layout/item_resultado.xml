@@ -5,124 +5,169 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/spacing_medium"
-    android:layout_marginBottom="8dp"
-    app:cardCornerRadius="10dp"
+    android:layout_marginBottom="@dimen/spacing_small"
+    app:cardCornerRadius="@dimen/radius_md"
     app:cardElevation="0dp"
-    app:strokeWidth="0.5dp"
-    app:strokeColor="?attr/colorOutline">
+    app:strokeWidth="@dimen/stroke_width"
+    app:strokeColor="?attr/colorOutlineVariant"
+    app:cardBackgroundColor="?attr/colorSurface">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="@dimen/spacing_medium">
 
-        <!-- Topo: badge encerrado + modalidade + fase -->
+        <!-- Topo: badge + modalidade + fase -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="@dimen/spacing_medium">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Encerrado"
-                android:textSize="10sp"
+                android:textSize="@dimen/text_xs"
                 android:textStyle="bold"
                 android:textColor="@color/badge_encerrado_text"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
                 android:background="@drawable/bg_badge_encerrado"
-                android:layout_marginEnd="6dp"/>
+                android:layout_marginEnd="@dimen/spacing_small"/>
 
             <TextView
                 android:id="@+id/tvModalidade"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="10sp"
+                android:textSize="@dimen/text_xs"
                 android:textStyle="bold"
                 android:textColor="@color/badge_modalidade_text"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:background="@drawable/bg_badge_modalidade"/>
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/bg_badge_modalidade"
+                android:maxLines="1"
+                android:ellipsize="end"/>
 
             <TextView
                 android:id="@+id/tvFase"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
+                android:textSize="@dimen/text_xs"
                 android:textColor="?attr/colorOnSurfaceVariant"
-                android:layout_marginStart="6dp"/>
+                android:layout_marginStart="@dimen/spacing_small"/>
         </LinearLayout>
 
-        <!-- Times -->
+        <!-- Times + Placar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="@dimen/spacing_medium">
 
-            <TextView
-                android:id="@+id/tvMandante"
+            <!-- Mandante -->
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="?attr/colorOnSurface"/>
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/tvMandante"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_body_lg"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="?attr/colorOnSurface"
+                    android:maxLines="2"
+                    android:ellipsize="end"/>
+            </LinearLayout>
 
-            <TextView
+            <!-- Placar -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="vs"
-                android:textSize="12sp"
-                android:textColor="?attr/colorOnSurfaceVariant"
-                android:paddingHorizontal="10dp"/>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/spacing_medium">
+                <TextView
+                    android:id="@+id/tvPlacar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="— × —"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorPrimary"
+                    android:gravity="center"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvVisitante"
+            <!-- Visitante -->
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="?attr/colorOnSurface"/>
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/tvVisitante"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_body_lg"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="?attr/colorOnSurface"
+                    android:maxLines="2"
+                    android:ellipsize="end"/>
+            </LinearLayout>
         </LinearLayout>
 
         <!-- Separador -->
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="?attr/colorOutline"
-            android:layout_marginBottom="8dp"/>
+            android:background="?attr/colorOutlineVariant"
+            android:layout_marginBottom="@dimen/spacing_small"/>
 
         <!-- Data + Local -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginEnd="6dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/tvLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_caption"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/tvData"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="11sp"
+                android:textSize="@dimen/text_caption"
                 android:textColor="?attr/colorOnSurfaceVariant"/>
 
-            <TextView
-                android:id="@+id/tvLocal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11sp"
-                android:textColor="?attr/colorOnSurfaceVariant"/>
         </LinearLayout>
-
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

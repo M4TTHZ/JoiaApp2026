@@ -12,24 +12,22 @@ class RankingAdapter : ListAdapter<RankingGeralItem, RankingAdapter.VH>(DIFF) {
 
     companion object {
         private val DIFF = object : DiffUtil.ItemCallback<RankingGeralItem>() {
-            override fun areItemsTheSame(a: RankingGeralItem, b: RankingGeralItem) =
-                a.cursoId == b.cursoId
+            override fun areItemsTheSame(a: RankingGeralItem, b: RankingGeralItem) = a.cursoId == b.cursoId
             override fun areContentsTheSame(a: RankingGeralItem, b: RankingGeralItem) = a == b
         }
     }
 
     inner class VH(private val b: ItemRankingBinding) : RecyclerView.ViewHolder(b.root) {
-        fun bind(item: RankingGeralItem, posicao: Int) {
-            b.tvPosicao.text = "${posicao + 1}"
+        fun bind(item: RankingGeralItem, pos: Int) {
+            b.tvPosicao.text = "${pos + 1}"
             b.tvSigla.text   = item.sigla.take(3)
             b.tvNome.text    = item.nome
             b.tvPontos.text  = "${item.pontos} pts"
 
-            // Destaque visual para o pódio
-            val bgColor = when (posicao) {
-                0 -> android.graphics.Color.parseColor("#EEEDFE") // ouro → roxo claro
-                1 -> android.graphics.Color.parseColor("#E1F5EE") // prata → verde claro
-                2 -> android.graphics.Color.parseColor("#FAEEDA") // bronze → âmbar claro
+            val bgColor = when (pos) {
+                0 -> android.graphics.Color.parseColor("#FFC107")
+                1 -> android.graphics.Color.parseColor("#B0BEC5")
+                2 -> android.graphics.Color.parseColor("#A97142")
                 else -> android.graphics.Color.TRANSPARENT
             }
             b.root.setCardBackgroundColor(bgColor)
@@ -39,6 +37,5 @@ class RankingAdapter : ListAdapter<RankingGeralItem, RankingAdapter.VH>(DIFF) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         VH(ItemRankingBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    override fun onBindViewHolder(holder: VH, position: Int) =
-        holder.bind(getItem(position), position)
+    override fun onBindViewHolder(holder: VH, position: Int) = holder.bind(getItem(position), position)
 }

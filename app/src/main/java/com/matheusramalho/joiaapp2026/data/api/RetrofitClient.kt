@@ -32,8 +32,7 @@ object RetrofitClient {
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
 
-    val authApi: AuthApi = retrofit.create(AuthApi::class.java)
-    val gameApi: GameApi = retrofit.create(GameApi::class.java)
-
+    val authApi:    AuthApi    = retrofit.create(AuthApi::class.java)
+    val gameApi:    GameApi    = retrofit.create(GameApi::class.java)
     val rankingApi: RankingApi = retrofit.create(RankingApi::class.java)
 }

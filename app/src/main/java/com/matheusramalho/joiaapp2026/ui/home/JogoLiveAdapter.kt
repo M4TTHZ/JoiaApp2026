@@ -13,16 +13,28 @@ class JogoLiveAdapter : ListAdapter<JogoResponse, JogoLiveAdapter.VH>(DIFF) {
     companion object {
         private val DIFF = object : DiffUtil.ItemCallback<JogoResponse>() {
             override fun areItemsTheSame(a: JogoResponse, b: JogoResponse) = a.id == b.id
-            override fun areContentsTheSame(a: JogoResponse, b: JogoResponse) = a == b
+            // ← compara placar também para forçar rebind quando muda
+            override fun areContentsTheSame(a: JogoResponse, b: JogoResponse) =
+                a.placarMandante  == b.placarMandante  &&
+                        a.placarVisitante == b.placarVisitante &&
+                        a.status          == b.status          &&
+                        a.id              == b.id
         }
     }
 
     inner class VH(private val b: ItemJogoLiveBinding) : RecyclerView.ViewHolder(b.root) {
         fun bind(j: JogoResponse) {
-            b.tvLiveFase.text     = j.fase.ifBlank { "Ao vivo" }
-            b.tvLiveMandante.text = j.mandanteId.take(8)   // substitua por nome real
-            b.tvLiveVisitante.text= j.visitanteId.take(8)
-            b.tvLiveLocal.text    = j.local.ifBlank { "Local não informado" }
+            val faseLabel = buildString {
+                append(j.nomeModalidade())
+                if (j.fase.isNotBlank()) append(" · ${j.faseFormatada()}")
+            }
+            b.tvLiveFase.text      = faseLabel
+            b.tvLiveMandante.text  = j.nomeMandante()
+            b.tvLiveVisitante.text = j.nomeVisitante()
+            b.tvLiveLocal.text     = j.localFormatado()
+
+            // ← Placar direto no campo, sem reflection
+            b.tvPlacar.text = "${j.placarMandante} × ${j.placarVisitante}"
         }
     }
 

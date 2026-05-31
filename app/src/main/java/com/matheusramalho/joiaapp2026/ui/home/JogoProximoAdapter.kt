@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.matheusramalho.joiaapp2026.data.model.JogoResponse
 import com.matheusramalho.joiaapp2026.databinding.ItemJogoProximoBinding
 import java.time.ZonedDateTime
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
@@ -18,18 +19,27 @@ class JogoProximoAdapter : ListAdapter<JogoResponse, JogoProximoAdapter.VH>(DIFF
             override fun areItemsTheSame(a: JogoResponse, b: JogoResponse) = a.id == b.id
             override fun areContentsTheSame(a: JogoResponse, b: JogoResponse) = a == b
         }
-        private val FMT = DateTimeFormatter.ofPattern("dd/MM HH:mm", Locale("pt", "BR"))
+        private val FMT_HORA = DateTimeFormatter.ofPattern(" ⏰ HH:mm", Locale("pt", "BR"))
+        private val FMT_DATA = DateTimeFormatter.ofPattern("\uD83D\uDCC5 dd/MM", Locale("pt", "BR"))
+        private val BR = ZoneId.of("America/Cuiaba")
     }
 
     inner class VH(private val b: ItemJogoProximoBinding) : RecyclerView.ViewHolder(b.root) {
         fun bind(j: JogoResponse) {
-            b.tvProxMandante.text   = j.mandanteId.take(8)   // substitua por nome real
-            b.tvProxVisitante.text  = j.visitanteId.take(8)
-            b.tvProxLocal.text      = j.local.ifBlank { "Local não informado" }
-            b.tvProxModalidade.text = j.modalidadeId.take(6) // substitua por nome real
+            b.tvProxMandante.text  = j.nomeMandante()
+            b.tvProxVisitante.text = j.nomeVisitante()
+            b.tvProxLocal.text     = j.localFormatado()
+            b.tvProxModalidade.text = j.nomeModalidade()
 
             b.tvProxHorario.text = try {
-                ZonedDateTime.parse(j.iniciaEm).format(FMT)
+                val zdt = ZonedDateTime.parse(j.iniciaEm).withZoneSameInstant(BR)
+                val hoje = ZonedDateTime.now(BR).toLocalDate()
+                val dataJogo = zdt.toLocalDate()
+                when {
+                    dataJogo == hoje           -> "Hoje ${zdt.format(FMT_HORA)}"
+                    dataJogo == hoje.plusDays(1) -> "Amanhã ${zdt.format(FMT_HORA)}"
+                    else -> "${zdt.format(FMT_DATA)} ${zdt.format(FMT_HORA)}"
+                }
             } catch (e: Exception) { j.iniciaEm }
         }
     }

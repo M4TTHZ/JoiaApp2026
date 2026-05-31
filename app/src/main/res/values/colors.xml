@@ -1,49 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Modern Premium Palette -->
-    <color name="purple_primary">#2563EB</color>
+    <!-- Brand -->
+
+    <color name="purple_primary">#3B82F6</color>
     <color name="purple_light">#DBEAFE</color>
-    <color name="purple_dark">#1E3A8A</color>
+    <color name="purple_dark">#1D4ED8</color>
     <color name="purple_surface">#FFFFFF</color>
 
-    <!-- Semantic Colors -->
-    <color name="status_live">#DC2626</color>
+    <!-- Status -->
+
+    <color name="status_live">#EF4444</color>
     <color name="status_ended">#64748B</color>
-    <color name="status_scheduled">#0284C7</color>
+    <color name="status_scheduled">#F59E0B</color>
 
-    <!-- Podium -->
-    <color name="podio_prata_bg">#DCFCE7</color>
-    <color name="podio_prata_text">#166534</color>
+    <!-- Podio -->
+
+    <color name="podio_prata_bg">#F1F5F9</color>
+    <color name="podio_prata_text">#475569</color>
+
     <color name="podio_bronze_bg">#FEF3C7</color>
-    <color name="podio_bronze_text">#92400E</color>
+    <color name="podio_bronze_text">#B45309</color>
 
-    <!-- Surface & Background -->
+    <!-- Background -->
+
     <color name="background_primary">#F8FAFC</color>
     <color name="background_secondary">#FFFFFF</color>
-    <color name="border_color">#E2E8F0</color>
+
+    <!-- Borders -->
+
+    <color name="border_color">#CBD5E1</color>
+
+    <!-- Text -->
+
     <color name="text_primary">#0F172A</color>
     <color name="text_secondary">#64748B</color>
 
     <!-- Header -->
+
     <color name="header_bg">#FFFFFF</color>
+
     <color name="header_text_primary">#0F172A</color>
+
     <color name="header_text_secondary">#64748B</color>
+
     <color name="header_tab_bg">#EFF6FF</color>
+
     <color name="header_tab_inactive">#94A3B8</color>
 
     <!-- Cards -->
+
     <color name="live_card_bg">#FFFFFF</color>
+
     <color name="live_text_secondary">#64748B</color>
+
     <color name="live_fase_color">#2563EB</color>
 
     <!-- Badges -->
-    <color name="badge_modalidade_text">#166534</color>
+
+    <color name="badge_modalidade_text">#15803D</color>
+
     <color name="badge_encerrado_text">#475569</color>
 
     <!-- Misc -->
-    <color name="sigla_text">#1E3A8A</color>
+
+    <color name="sigla_text">#1D4ED8</color>
+
     <color name="pontos_text">#2563EB</color>
+
 </resources>

@@ -58,10 +58,8 @@ class HomeFragment : Fragment() {
     private fun setupHeader() {
         val session = SessionManager(requireContext())
         val nome    = session.getNome() ?: "Usuário"
-        val curso   = session.getCursoNome() ?: ""  // adicione getCursoNome() ao SessionManager
 
         binding.tvHeaderNome.text  = "Olá, ${nome.split(" ").first()}"
-        binding.tvHeaderCurso.text = curso
         binding.tvAvatar.text      = nome.take(1).uppercase()
     }
 

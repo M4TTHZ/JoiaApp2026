@@ -25,6 +25,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:background="@color/header_bg"
+                    android:layout_marginTop="30dp"
                     android:paddingHorizontal="@dimen/spacing_medium"
                     android:paddingTop="@dimen/spacing_medium"
                     android:paddingBottom="0dp">

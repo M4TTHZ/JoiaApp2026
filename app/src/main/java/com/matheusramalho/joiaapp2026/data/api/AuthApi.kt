@@ -4,10 +4,10 @@ import com.matheusramalho.joiaapp2026.data.model.CursoResponse
 import com.matheusramalho.joiaapp2026.data.model.LoginRequest
 import com.matheusramalho.joiaapp2026.data.model.LoginResponse
 import com.matheusramalho.joiaapp2026.data.model.RegisterRequest
+import com.matheusramalho.joiaapp2026.data.model.UpdateProfileRequest
+import com.matheusramalho.joiaapp2026.data.model.UserResponse
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface AuthApi {
 
@@ -19,4 +19,15 @@ interface AuthApi {
 
     @GET("cursos")
     suspend fun getCursos(): Response<List<CursoResponse>>
+
+    @GET("users/me")
+    suspend fun getMe(
+        @Header("Authorization") token: String
+    ): Response<UserResponse>
+
+    @PATCH("users/me")
+    suspend fun updateMe(
+        @Header("Authorization") token: String,
+        @Body request: UpdateProfileRequest
+    ): Response<UserResponse>
 }

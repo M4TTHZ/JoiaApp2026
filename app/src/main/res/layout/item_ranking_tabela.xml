@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/spacing_medium"
+    android:layout_marginBottom="@dimen/spacing_xs"
+    app:cardCornerRadius="@dimen/radius_md"
+    app:cardElevation="0dp"
+    app:strokeWidth="@dimen/stroke_width"
+    app:strokeColor="?attr/colorOutlineVariant">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/spacing_medium"
+        android:paddingVertical="10dp">
+
+        <!-- Posição -->
+        <TextView
+            android:id="@+id/tvPosicao"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center"
+            android:textSize="@dimen/text_caption"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
+            android:background="@drawable/bg_posicao"
+            android:layout_marginEnd="@dimen/spacing_small"/>
+
+        <!-- Equipe + Curso -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:layout_marginEnd="@dimen/spacing_xs">
+            <TextView
+                android:id="@+id/tvEquipe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_body"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:maxLines="1"
+                android:ellipsize="end"/>
+            <TextView
+                android:id="@+id/tvCurso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_xs"
+                android:textColor="?attr/colorOnSurfaceVariant"/>
+        </LinearLayout>
+
+        <!-- J -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="J" android:textSize="@dimen/text_xs"
+                android:textColor="?attr/colorOnSurfaceVariant" android:gravity="center"/>
+            <TextView android:id="@+id/tvJogos" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="@dimen/text_body"
+                android:textStyle="bold" android:textColor="?attr/colorOnSurface" android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- V -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="V" android:textSize="@dimen/text_xs"
+                android:textColor="?attr/colorOnSurfaceVariant" android:gravity="center"/>
+            <TextView android:id="@+id/tvVitorias" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="@dimen/text_body"
+                android:textStyle="bold" android:textColor="?attr/colorOnSurface" android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- E -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="E" android:textSize="@dimen/text_xs"
+                android:textColor="?attr/colorOnSurfaceVariant" android:gravity="center"/>
+            <TextView android:id="@+id/tvEmpates" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="@dimen/text_body"
+                android:textStyle="bold" android:textColor="?attr/colorOnSurface" android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- D -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="D" android:textSize="@dimen/text_xs"
+                android:textColor="?attr/colorOnSurfaceVariant" android:gravity="center"/>
+            <TextView android:id="@+id/tvDerrotas" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="@dimen/text_body"
+                android:textStyle="bold" android:textColor="?attr/colorOnSurface" android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- SG -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="SG" android:textSize="@dimen/text_xs"
+                android:textColor="?attr/colorOnSurfaceVariant" android:gravity="center"/>
+            <TextView android:id="@+id/tvSaldo" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="@dimen/text_body"
+                android:textStyle="bold" android:textColor="?attr/colorOnSurface" android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- PTS -->
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="PTS" android:textSize="@dimen/text_xs"
+                android:textColor="@color/pontos_text" android:textStyle="bold" android:gravity="center"/>
+            <TextView android:id="@+id/tvPontos" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:textSize="@dimen/text_body"
+                android:textStyle="bold" android:textColor="@color/pontos_text" android:gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

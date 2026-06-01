@@ -24,13 +24,13 @@ class RankingAdapter : ListAdapter<RankingGeralItem, RankingAdapter.VH>(DIFF) {
             b.tvNome.text    = item.nome
             b.tvPontos.text  = "${item.pontos} pts"
 
-            val bgColor = when (pos) {
-                0 -> android.graphics.Color.parseColor("#FFC107")
-                1 -> android.graphics.Color.parseColor("#B0BEC5")
-                2 -> android.graphics.Color.parseColor("#A97142")
-                else -> android.graphics.Color.TRANSPARENT
-            }
-            b.root.setCardBackgroundColor(bgColor)
+//            val bgColor = when (pos) {
+//                0 -> android.graphics.Color.parseColor("#FFC107")
+//                1 -> android.graphics.Color.parseColor("#B0BEC5")
+//                2 -> android.graphics.Color.parseColor("#A97142")
+//                else -> android.graphics.Color.TRANSPARENT
+//            }
+//            b.root.setCardBackgroundColor(bgColor)
         }
     }
 
